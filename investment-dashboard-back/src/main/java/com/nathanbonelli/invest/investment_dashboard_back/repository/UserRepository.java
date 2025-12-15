@@ -7,4 +7,5 @@ import com.nathanbonelli.invest.investment_dashboard_back.entity.User;
 
 @Repository
 public interface UserRepository extends CrudRepository<User, Long> {
+    User findByUsername(String username);
 }
