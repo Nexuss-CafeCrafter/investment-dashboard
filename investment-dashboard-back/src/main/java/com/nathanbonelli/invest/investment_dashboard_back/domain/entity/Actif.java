@@ -1,4 +1,4 @@
-package com.nathanbonelli.invest.investment_dashboard_back.entity;
+package com.nathanbonelli.invest.investment_dashboard_back.domain.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
