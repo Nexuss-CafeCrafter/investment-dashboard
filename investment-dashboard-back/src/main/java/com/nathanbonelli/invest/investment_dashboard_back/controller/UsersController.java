@@ -9,27 +9,32 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.nathanbonelli.invest.investment_dashboard_back.entity.User;
-import com.nathanbonelli.invest.investment_dashboard_back.service.UserService;
+import com.nathanbonelli.invest.investment_dashboard_back.entity.Users;
+import com.nathanbonelli.invest.investment_dashboard_back.service.UsersService;
 
 @Controller
 @RequestMapping("/api/users")
-public class UserController {
+public class UsersController {
     @Autowired
-    private UserService userService;
+    private UsersService userService;
 
     @PostMapping
-    public User createUser(@RequestBody User user) {
+    public Users createUser(@RequestBody Users user) {
         return userService.saveUser(user);
     }
 
+    @GetMapping
+    public Iterable<Users> getAllUsers() {
+        return userService.getAllUsers();
+    }
+
     @GetMapping("/{id}")
-    public User getUserById(@PathVariable Long id) {
+    public Users getUserById(@PathVariable Long id) {
         return userService.getById(id);
     }
 
     @GetMapping("/{username}")
-    public User getUserByUsername(@PathVariable String username) {
+    public Users getUserByUsername(@PathVariable String username) {
         return userService.getByUsername(username);
     }
 

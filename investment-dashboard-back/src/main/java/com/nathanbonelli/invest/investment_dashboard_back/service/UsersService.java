@@ -3,23 +3,27 @@ package com.nathanbonelli.invest.investment_dashboard_back.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.nathanbonelli.invest.investment_dashboard_back.entity.User;
-import com.nathanbonelli.invest.investment_dashboard_back.repository.UserRepository;
+import com.nathanbonelli.invest.investment_dashboard_back.entity.Users;
+import com.nathanbonelli.invest.investment_dashboard_back.repository.UsersRepository;
 
 @Service
-public class UserService {
+public class UsersService {
     @Autowired
-    private UserRepository userRepository;
+    private UsersRepository userRepository;
 
-    public User saveUser(User user) {
+    public Users saveUser(Users user) {
         return userRepository.save(user);
     }
 
-    public User getById(Long id) {
+    public Iterable<Users> getAllUsers() {
+        return userRepository.findAll();
+    }
+
+    public Users getById(Long id) {
         return userRepository.findById(id).orElseThrow(() -> new RuntimeException("Plural User has same ID"));
     }
 
-    public User getByUsername(String username) {
+    public Users getByUsername(String username) {
         return userRepository.findByUsername(username);
     }
 
